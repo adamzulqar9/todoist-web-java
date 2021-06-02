@@ -1,7 +1,6 @@
 package test;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
@@ -24,6 +23,7 @@ public class BaseTest {
         wait = new WebDriverWait(driver, 15);
         System.setProperty("webdriver.chrome.driver", ".\\chromedriver.exe");
         driver.get(Variables.url);
+        driver.manage().window().maximize();
     }
 
     @AfterMethod
@@ -32,16 +32,13 @@ public class BaseTest {
         driver.quit();
     }
 
-    @Test
-    public void test() throws InterruptedException{
+    public void login() throws InterruptedException{
         HelperFunctions.waitAndClick(wait, Variables.login, "Login tab");
 
-        WebElement input_email = driver.findElement(Variables.email);
-        input_email.sendKeys(Credentials.email_id);
+        HelperFunctions.enterKeys(driver, Variables.email, Credentials.email_id);
 
-        WebElement input_passwd = driver.findElement(Variables.password);
-        input_passwd.sendKeys(Credentials.password);
+        HelperFunctions.enterKeys(driver, Variables.password, Credentials.password);
 
-        HelperFunctions.waitAndClick(wait, Variables.login_btn, "Login button");
+        HelperFunctions.waitAndClick(wait, Variables.loginBtn, "Login button");
     }
 }
