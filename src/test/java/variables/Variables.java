@@ -18,4 +18,5 @@ public class Variables {
     public static By taskName       = By.xpath("//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr']");
     public static By addTaskBtn     = By.xpath("//button[@class='ist_button ist_button_red']");
     public static By createdTask    = By.xpath("//ul[@data-day-list-id='2021-06-03']//div[@class='task_list_item__content__content_wrapper']");
+    public static By doneCheckBox   = By.xpath("//section[contains(.,'Today')]//div[@class='task_checkbox__circle']");
 }
